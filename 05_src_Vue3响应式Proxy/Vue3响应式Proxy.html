@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue3响应式</title>
+</head>
+<body>
+    <script>
+        // hero 称为源对象，p 称为代理对象
+        // target 就是 hero 源对象
+        // Proxy 只写 get 和 set，添加新元素也可以捕获了，但是删除捕获不到
+        /* const hero = { name: '辛', age: '9999' }
+        const p = new Proxy(hero, {
+            get(target, propName) {
+                console.log(`有人读取 p 身上的 ${propName} 属性了`);
+                // return target[propName]
+                return Reflect.get(target, propName)
+            },
+            // 不仅修改的时候会调用，追加属性也会调用
+            set(target, propName, value) {
+                console.log(`有人修改 p 身上的 ${propName} 属性了， 修改后的值为 ${value}`);
+                // target[propName] = value
+                Reflect.set(target, propName, value)
+            },
+            deleteProperty(target, propName) {
+                console.log(`有人删除 p 身上的 ${propName} 属性了`);
+                // 在这里用 delet 删除
+                return Reflect.deleteProperty(target, propName)
+            }
+        })
+        console.log(p); */
+
+
+        /* 
+            练习
+        */
+       const obj = { name: '擎空😈凡尔斯', age: 100000 }
+       const p = new Proxy(obj, {
+        writable: true,
+        
+        get(target, propName) {
+            console.log('有人读取属性');
+            return Reflect.get(target, propName)
+        },
+        set(target, propName, value) {
+            console.log('有人修改或者添加属性');
+            Reflect.set(target, propName, value)
+        },
+        deleteProperty(target, propName) {
+            console.log('有人删除属性');
+            return Reflect.deleteProperty(target, propName)
+        }
+       })
+    //    console.log(obj);
+
+
+       // 练习 ~~~~
+    //    const obj = { name: '擎空😈凡尔斯', skill: '苍鹰之眼' }
+
+    </script>
+</body>
+</html>

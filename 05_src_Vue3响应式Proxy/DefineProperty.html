@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const hero = { name: '辛', age: '9999' }
+        const p = {}
+        Object.defineProperty(p, 'name', {
+            get() {
+                return hero.name
+            },
+            set(val) {
+                hero.name = val
+            }
+        })
+        Object.defineProperty(p, 'age', {
+            get() {
+                return hero.age
+            },
+            set(val) {
+                hero.age = val
+            }
+        })
+    </script>
+</body>
+</html>
